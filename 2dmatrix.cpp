@@ -1,3 +1,4 @@
+// how to build a 2d matrix and how to print in spiral(clockwise) manner.
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -36,7 +37,8 @@ int main()
         {
             break;
         }
-
+//         added this and the other break statements due to duplicate printing of matrix elements.
+        
         for (int i = row_start; i <= row_end; i++)
         {
             cout << arr[i][col_end] << " ";
