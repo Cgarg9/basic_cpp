@@ -1,4 +1,3 @@
-// how to build a 2d matrix and how to print in spiral(clockwise) manner.
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -22,52 +21,37 @@ int main()
         }
         cout << "\n";
     }
-    // printing matrix in spiral order
-    int row_start = 0, row_end = n - 1, col_start = 0, col_end = m - 1;
-
-    while (row_start <= row_end && col_start <= col_end)
+    // creating transpose of matrix
+    // work for either the upper or lower triangular matrix
+    // because of square matrix.
+    int arr_01[n][m];
+    // creating a duplicate of the given matrix
+    for (int i = 0; i < n; i++)
     {
-
-        for (int i = col_start; i <= col_end; i++)
+        for (int j = 0; j < m; j++)
         {
-            cout << arr[row_start][i] << " ";
-        }
-        row_start++;
-        if (row_start > row_end)
-        {
-            break;
-        }
-//         added this and the other break statements due to duplicate printing of matrix elements.
-        
-        for (int i = row_start; i <= row_end; i++)
-        {
-            cout << arr[i][col_end] << " ";
-        }
-        col_end--;
-        if (col_start > col_end)
-        {
-            break;
-        }
-
-        for (int i = col_end; i >= col_start; i--)
-        {
-            cout << arr[row_end][i] << " ";
-        }
-        row_end--;
-        if (row_start > row_end)
-        {
-            break;
-        }
-
-        for (int i = row_end; i >= row_start; i--)
-        {
-            cout << arr[i][col_start] << " ";
-        }
-        col_start++;
-        if (col_start > col_end)
-        {
-            break;
+            arr_01[i][j] = arr[i][j];
         }
     }
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i; j < m; j++)
+        {
+            // swap(arr_01[i][j], arr_01[j][i]);
+            int temp = arr_01[i][j];
+            arr_01[i][j] = arr_01[j][i];
+            arr_01[j][i] = temp;
+        }
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            cout << arr_01[i][j] << " ";
+        }
+        cout << "\n";
+    }
+
     return 0;
 }
