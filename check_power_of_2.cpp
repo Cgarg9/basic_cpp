@@ -6,7 +6,7 @@ bool ispower_2(int n)
     // 8 = 1000;
     // 8-1 = 7 = 0111;
     // 7 & 8 = 0
-    return ((n & (n - 1)) == 0);
+    return n && ((n & (n - 1)) == 0);
 }
 int main()
 {
